@@ -33,20 +33,20 @@ public class MedianOf2SortedArray {
         int left = (n + 1) / 2;
         while(low <= high) {
             mid1 = (low + high) / 2;
-            mid2 = left - 1;
+            mid2 = left - mid1;
             l1 = Integer.MIN_VALUE;
             l2 = Integer.MIN_VALUE;
             r1 = Integer.MAX_VALUE;
             r2 = Integer.MAX_VALUE;
-            if(mid1 - 1 >= 0) l1 = mid1 - 1;
-            if(mid2 - 1 >= 0) l2 = mid2 - 1;
-            if(mid1 < n1) r1 = mid1;
-            if(mid2 < n2) r2 = mid2;
+            if(mid1 - 1 >= 0) l1 = a[mid1 - 1];
+            if(mid2 - 1 >= 0) l2 = b[mid2 - 1];
+            if(mid1 < n1) r1 = a[mid1];
+            if(mid2 < n2) r2 = b[mid2];
             if(l1 <= r2 && l2 <= r1) {
                 if(n % 2 == 1) {
                     return Math.max(l1, l2);
                 }
-                else {
+                else { 
                     return (Math.max(l1, l2) + Math.min(r1, r2))/ 2.0;
                 } 
             }
